@@ -1,0 +1,604 @@
+object Form1: TForm1
+  Left = 604
+  Height = 632
+  Top = 153
+  Width = 1152
+  Caption = 'ДНО ИТ Google2Ru'
+  ClientHeight = 607
+  ClientWidth = 1152
+  DesignTimePPI = 120
+  Menu = MainMenu1
+  OnCreate = FormCreate
+  Position = poScreenCenter
+  LCLVersion = '2.0.12.0'
+  object VST: TVirtualStringTree
+    Left = 0
+    Height = 607
+    Top = 0
+    Width = 935
+    Align = alClient
+    DefaultText = 'Node'
+    Header.AutoSizeIndex = -1
+    Header.Columns = <>
+    Header.MainColumn = -1
+    Header.Options = [hoColumnResize, hoDrag, hoShowSortGlyphs, hoVisible]
+    ParentFont = False
+    TabOrder = 0
+    TreeOptions.PaintOptions = [toShowButtons, toShowDropmark, toShowTreeLines, toThemeAware, toUseBlendedImages]
+    TreeOptions.SelectionOptions = [toFullRowSelect]
+    OnAddToSelection = VSTAddToSelection
+    OnCompareNodes = VSTCompareNodes
+    OnGetText = VSTGetText
+    OnGetNodeDataSize = VSTGetNodeDataSize
+    OnHeaderClick = VSTHeaderClick
+    OnKeyDown = VSTKeyDown
+    OnNodeClick = VSTNodeClick
+  end
+  object Panel1: TPanel
+    Left = 935
+    Height = 607
+    Top = 0
+    Width = 217
+    Align = alRight
+    BevelOuter = bvNone
+    ClientHeight = 607
+    ClientWidth = 217
+    ParentFont = False
+    TabOrder = 1
+    object GroupBox1: TGroupBox
+      Left = 0
+      Height = 163
+      Top = 0
+      Width = 217
+      Align = alTop
+      Caption = 'Настройки по умолчанию'
+      ClientHeight = 138
+      ClientWidth = 213
+      ParentFont = False
+      TabOrder = 0
+      object Button1: TButton
+        Left = 8
+        Height = 31
+        Top = 323
+        Width = 200
+        Caption = 'Конвертировать в Yandex'
+        OnClick = Button1Click
+        ParentFont = False
+        TabOrder = 0
+      end
+      object DefPassGoogle: TLabeledEdit
+        Left = 8
+        Height = 28
+        Top = 24
+        Width = 200
+        EditLabel.Height = 20
+        EditLabel.Width = 200
+        EditLabel.Caption = 'Пароль от ящика Google'
+        EditLabel.ParentColor = False
+        EditLabel.ParentFont = False
+        ParentFont = False
+        TabOrder = 1
+        Text = '12345678'
+      end
+      object defPassYandex: TLabeledEdit
+        Left = 8
+        Height = 28
+        Top = 84
+        Width = 200
+        EditLabel.Height = 20
+        EditLabel.Width = 200
+        EditLabel.Caption = 'Пароль по умолчанию'
+        EditLabel.ParentColor = False
+        EditLabel.ParentFont = False
+        ParentFont = False
+        TabOrder = 2
+        Text = '12345678'
+      end
+      object cbDefGender: TComboBox
+        Left = 8
+        Height = 26
+        Top = 170
+        Width = 125
+        ItemHeight = 20
+        ItemIndex = 0
+        Items.Strings = (
+          'male'
+          'female'
+        )
+        ParentFont = False
+        Style = csOwnerDrawFixed
+        TabOrder = 3
+        Text = 'male'
+      end
+      object Label1: TLabel
+        Left = 8
+        Height = 20
+        Top = 150
+        Width = 28
+        Caption = 'Пол'
+        ParentColor = False
+        ParentFont = False
+      end
+      object Label2: TLabel
+        Left = 8
+        Height = 20
+        Top = 210
+        Width = 107
+        Caption = 'Дата рождения'
+        ParentColor = False
+        ParentFont = False
+      end
+      object dtpDefDate: TDateTimePicker
+        Left = 8
+        Height = 28
+        Top = 230
+        Width = 99
+        CenturyFrom = 1941
+        MaxDate = 2958465
+        MinDate = -53780
+        ParentFont = False
+        TabOrder = 4
+        TrailingSeparator = False
+        TextForNullDate = 'NULL'
+        LeadingZeros = True
+        Kind = dtkDate
+        TimeFormat = tf24
+        TimeDisplay = tdHMS
+        DateMode = dmComboBox
+        Date = 44629
+        Time = 0.413266956020379
+        UseDefaultSeparators = True
+        HideDateTimeParts = []
+        MonthNames = 'Long'
+      end
+      object Label3: TLabel
+        Left = 9
+        Height = 20
+        Top = 266
+        Width = 34
+        Caption = 'Язык'
+        ParentColor = False
+        ParentFont = False
+      end
+      object cbDefLanguage: TComboBox
+        Left = 10
+        Height = 28
+        Top = 288
+        Width = 65
+        ItemHeight = 20
+        ItemIndex = 0
+        Items.Strings = (
+          'ru'
+          'en'
+        )
+        ParentFont = False
+        TabOrder = 5
+        Text = 'ru'
+      end
+      object Button3: TButton
+        Left = 8
+        Height = 31
+        Top = 477
+        Width = 200
+        Caption = 'Конвертировать в Mail.ru'
+        OnClick = Button3Click
+        ParentFont = False
+        TabOrder = 6
+      end
+      object Label7: TLabel
+        Left = 8
+        Height = 20
+        Top = 127
+        Width = 77
+        Caption = 'Для Yandex'
+        ParentColor = False
+        ParentFont = False
+      end
+      object Bevel1: TBevel
+        Left = 87
+        Height = 2
+        Top = 140
+        Width = 122
+      end
+      object Bevel2: TBevel
+        Left = 89
+        Height = 2
+        Top = 375
+        Width = 120
+      end
+      object Label8: TLabel
+        Left = 8
+        Height = 20
+        Top = 363
+        Width = 79
+        Caption = 'Для Mail.Ru'
+        ParentColor = False
+        ParentFont = False
+      end
+      object mailDefGroups: TLabeledEdit
+        Left = 8
+        Height = 28
+        Top = 410
+        Width = 200
+        EditLabel.Height = 20
+        EditLabel.Width = 200
+        EditLabel.Caption = 'Группы рассылки'
+        EditLabel.ParentColor = False
+        EditLabel.ParentFont = False
+        ParentFont = False
+        TabOrder = 7
+        Text = 'All'
+      end
+      object cbDefDelete: TCheckBox
+        Left = 8
+        Height = 24
+        Top = 443
+        Width = 180
+        Caption = 'Удалить пользователя'
+        ParentFont = False
+        TabOrder = 8
+      end
+    end
+    object GroupBox2: TGroupBox
+      Left = 0
+      Height = 595
+      Top = 340
+      Width = 217
+      Align = alTop
+      Caption = 'Редактировать (Yandex)'
+      ClientHeight = 570
+      ClientWidth = 213
+      ParentFont = False
+      TabOrder = 1
+      Visible = False
+      object SourceLogin: TLabeledEdit
+        Left = 8
+        Height = 28
+        Top = 24
+        Width = 200
+        EditLabel.Height = 20
+        EditLabel.Width = 200
+        EditLabel.Caption = 'Source Login'
+        EditLabel.ParentColor = False
+        EditLabel.ParentFont = False
+        ParentFont = False
+        TabOrder = 0
+      end
+      object SourcePassword: TLabeledEdit
+        Left = 8
+        Height = 28
+        Top = 76
+        Width = 200
+        EditLabel.Height = 20
+        EditLabel.Width = 200
+        EditLabel.Caption = 'Source Password'
+        EditLabel.ParentColor = False
+        EditLabel.ParentFont = False
+        ParentFont = False
+        TabOrder = 1
+      end
+      object YandexLogin: TLabeledEdit
+        Left = 8
+        Height = 28
+        Top = 128
+        Width = 200
+        EditLabel.Height = 20
+        EditLabel.Width = 200
+        EditLabel.Caption = 'Yandex Login'
+        EditLabel.ParentColor = False
+        EditLabel.ParentFont = False
+        ParentFont = False
+        TabOrder = 2
+      end
+      object YandexPassword: TLabeledEdit
+        Left = 8
+        Height = 28
+        Top = 180
+        Width = 200
+        EditLabel.Height = 20
+        EditLabel.Width = 200
+        EditLabel.Caption = 'Yandex Password'
+        EditLabel.ParentColor = False
+        EditLabel.ParentFont = False
+        ParentFont = False
+        TabOrder = 3
+      end
+      object YandexName: TLabeledEdit
+        Left = 8
+        Height = 28
+        Top = 232
+        Width = 200
+        EditLabel.Height = 20
+        EditLabel.Width = 200
+        EditLabel.Caption = 'Имя'
+        EditLabel.ParentColor = False
+        EditLabel.ParentFont = False
+        ParentFont = False
+        TabOrder = 4
+      end
+      object YandexMiddleName: TLabeledEdit
+        Left = 9
+        Height = 28
+        Top = 284
+        Width = 200
+        EditLabel.Height = 20
+        EditLabel.Width = 200
+        EditLabel.Caption = 'Отчество'
+        EditLabel.ParentColor = False
+        EditLabel.ParentFont = False
+        ParentFont = False
+        TabOrder = 5
+      end
+      object YandexSurname: TLabeledEdit
+        Left = 8
+        Height = 28
+        Top = 336
+        Width = 200
+        EditLabel.Height = 20
+        EditLabel.Width = 200
+        EditLabel.Caption = 'Фамилия'
+        EditLabel.ParentColor = False
+        EditLabel.ParentFont = False
+        ParentFont = False
+        TabOrder = 6
+      end
+      object Label4: TLabel
+        Left = 9
+        Height = 20
+        Top = 368
+        Width = 28
+        Caption = 'Пол'
+        ParentColor = False
+        ParentFont = False
+      end
+      object cbGender: TComboBox
+        Left = 9
+        Height = 26
+        Top = 388
+        Width = 99
+        ItemHeight = 20
+        ItemIndex = 0
+        Items.Strings = (
+          'male'
+          'female'
+        )
+        ParentFont = False
+        Style = csOwnerDrawFixed
+        TabOrder = 7
+        Text = 'male'
+      end
+      object Label5: TLabel
+        Left = 8
+        Height = 20
+        Top = 420
+        Width = 107
+        Caption = 'Дата рождения'
+        ParentColor = False
+        ParentFont = False
+      end
+      object dtpDate: TDateTimePicker
+        Left = 8
+        Height = 28
+        Top = 442
+        Width = 99
+        CenturyFrom = 1941
+        MaxDate = 2958465
+        MinDate = -53780
+        ParentFont = False
+        TabOrder = 8
+        TrailingSeparator = False
+        TextForNullDate = 'NULL'
+        LeadingZeros = True
+        Kind = dtkDate
+        TimeFormat = tf24
+        TimeDisplay = tdHMS
+        DateMode = dmComboBox
+        Date = 44629
+        Time = 0.413266956020379
+        UseDefaultSeparators = True
+        HideDateTimeParts = []
+        MonthNames = 'Long'
+      end
+      object Label6: TLabel
+        Left = 8
+        Height = 20
+        Top = 473
+        Width = 34
+        Caption = 'Язык'
+        ParentColor = False
+        ParentFont = False
+      end
+      object cbLanguage: TComboBox
+        Left = 8
+        Height = 28
+        Top = 499
+        Width = 65
+        ItemHeight = 20
+        ItemIndex = 0
+        Items.Strings = (
+          'ru'
+          'en'
+        )
+        ParentFont = False
+        TabOrder = 9
+        Text = 'ru'
+      end
+      object Button2: TButton
+        Left = 114
+        Height = 31
+        Top = 536
+        Width = 94
+        Caption = 'Сохранить'
+        OnClick = Button2Click
+        ParentFont = False
+        TabOrder = 10
+      end
+    end
+    object GroupBox3: TGroupBox
+      Left = 0
+      Height = 177
+      Top = 163
+      Width = 217
+      Align = alTop
+      Caption = 'Редактировать (Mail.Ru)'
+      ClientHeight = 152
+      ClientWidth = 213
+      ParentFont = False
+      TabOrder = 2
+      Visible = False
+      object MailSourceLogin: TLabeledEdit
+        Left = 8
+        Height = 28
+        Top = 284
+        Width = 200
+        EditLabel.Height = 20
+        EditLabel.Width = 200
+        EditLabel.Caption = 'Source Login'
+        EditLabel.ParentColor = False
+        EditLabel.ParentFont = False
+        ParentFont = False
+        TabOrder = 0
+      end
+      object MailSourcePassword: TLabeledEdit
+        Left = 8
+        Height = 28
+        Top = 336
+        Width = 200
+        EditLabel.Height = 20
+        EditLabel.Width = 200
+        EditLabel.Caption = 'Source Password'
+        EditLabel.ParentColor = False
+        EditLabel.ParentFont = False
+        ParentFont = False
+        TabOrder = 1
+      end
+      object MailLogin: TLabeledEdit
+        Left = 8
+        Height = 28
+        Top = 24
+        Width = 200
+        EditLabel.Height = 20
+        EditLabel.Width = 200
+        EditLabel.Caption = 'Mail.Ru Login'
+        EditLabel.ParentColor = False
+        EditLabel.ParentFont = False
+        ParentFont = False
+        TabOrder = 2
+      end
+      object MailPassword: TLabeledEdit
+        Left = 8
+        Height = 28
+        Top = 76
+        Width = 200
+        EditLabel.Height = 20
+        EditLabel.Width = 200
+        EditLabel.Caption = 'Mail.Ru Password'
+        EditLabel.ParentColor = False
+        EditLabel.ParentFont = False
+        ParentFont = False
+        TabOrder = 3
+      end
+      object MailName: TLabeledEdit
+        Left = 8
+        Height = 28
+        Top = 128
+        Width = 200
+        EditLabel.Height = 20
+        EditLabel.Width = 200
+        EditLabel.Caption = 'Имя'
+        EditLabel.ParentColor = False
+        EditLabel.ParentFont = False
+        ParentFont = False
+        TabOrder = 4
+      end
+      object MailGroups: TLabeledEdit
+        Left = 8
+        Height = 28
+        Top = 232
+        Width = 200
+        EditLabel.Height = 20
+        EditLabel.Width = 200
+        EditLabel.Caption = 'Группы рассылок'
+        EditLabel.ParentColor = False
+        EditLabel.ParentFont = False
+        ParentFont = False
+        TabOrder = 5
+      end
+      object MailSurname: TLabeledEdit
+        Left = 8
+        Height = 28
+        Top = 180
+        Width = 200
+        EditLabel.Height = 20
+        EditLabel.Width = 200
+        EditLabel.Caption = 'Фамилия'
+        EditLabel.ParentColor = False
+        EditLabel.ParentFont = False
+        ParentFont = False
+        TabOrder = 6
+      end
+      object Button4: TButton
+        Left = 115
+        Height = 31
+        Top = 404
+        Width = 94
+        Caption = 'Сохранить'
+        OnClick = Button4Click
+        ParentFont = False
+        TabOrder = 7
+      end
+      object cbDelete: TCheckBox
+        Left = 9
+        Height = 24
+        Top = 372
+        Width = 191
+        Caption = 'Удаление пользователя'
+        ParentFont = False
+        TabOrder = 8
+      end
+    end
+  end
+  object MainMenu1: TMainMenu
+    Left = 88
+    Top = 184
+    object MenuItem1: TMenuItem
+      Caption = 'Файл'
+      object MenuItem2: TMenuItem
+        Caption = 'Импорт CSV Google'
+        OnClick = MenuItem2Click
+      end
+      object N1: TMenuItem
+        Caption = '-'
+      end
+      object MenuItem4: TMenuItem
+        Caption = 'Открыть CSV Yandex'
+        OnClick = MenuItem4Click
+      end
+      object MenuItem3: TMenuItem
+        Caption = 'Сохранить CSV Yandex'
+        OnClick = MenuItem3Click
+      end
+      object N3: TMenuItem
+        Caption = '-'
+      end
+      object MenuItem5: TMenuItem
+        Caption = 'Открыть CSV Mail.ru'
+        OnClick = MenuItem5Click
+      end
+      object MenuItem6: TMenuItem
+        Caption = 'Сохранить CSV Mail.ru'
+        OnClick = MenuItem6Click
+      end
+    end
+  end
+  object OpenDialog1: TOpenDialog
+    Filter = 'CSV файл|*.csv'
+    Left = 100
+    Top = 313
+  end
+  object SaveDialog1: TSaveDialog
+    Filter = 'CSV файл|*.csv'
+    Left = 231
+    Top = 203
+  end
+end
