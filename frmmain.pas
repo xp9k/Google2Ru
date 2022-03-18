@@ -53,9 +53,9 @@ type
   TForm1 = class(TForm)
     Bevel1: TBevel;
     Bevel2: TBevel;
-    Button1: TButton;
+    btToYandex: TButton;
     Button2: TButton;
-    Button3: TButton;
+    btToMailRu: TButton;
     Button4: TButton;
     cbDefGender: TComboBox;
     cbGender: TComboBox;
@@ -106,9 +106,9 @@ type
     YandexPassword: TLabeledEdit;
     YandexName: TLabeledEdit;
     MailSurname: TLabeledEdit;
-    procedure Button1Click(Sender: TObject);
+    procedure btToYandexClick(Sender: TObject);
     procedure Button2Click(Sender: TObject);
-    procedure Button3Click(Sender: TObject);
+    procedure btToMailRuClick(Sender: TObject);
     procedure Button4Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure MenuItem2Click(Sender: TObject);
@@ -704,7 +704,7 @@ begin
   end;
 end;
 
-procedure TForm1.Button1Click(Sender: TObject);
+procedure TForm1.btToYandexClick(Sender: TObject);
 var
   i: integer;
   GoogleData: PCSVGoogle;
@@ -799,14 +799,17 @@ begin
   VST.EndUpdate;
 end;
 
-procedure TForm1.Button3Click(Sender: TObject);
+procedure TForm1.btToMailRuClick(Sender: TObject);
 var
   i: integer;
   GoogleData: PCSVGoogle;
   MailData, NodeData: PCSVMail;
   Node: PVirtualNode;
+  bUseSeconName: boolean;
 begin
   ImportList := TList.Create;
+
+  bUseSeconName :=  Application.MessageBox('Подставить Отчество к Имени?', 'Вопрос', MB_YESNO) = IDYES;
 
   Node := VST.GetFirst;
   while Assigned(Node) do
@@ -821,6 +824,9 @@ begin
     MailData^.surname := GoogleData^.LastName;
     MailData^.groups := mailDefGroups.Text;
     MailData^.delete := MyBoolToStr(cbDefDelete.Checked);
+
+    if bUseSeconName then MailData^.name := MailData^.name + ' ' + GoogleData^.SecondName;
+
     ImportList.Add(MailData);
     Node := VST.GetNextSibling(Node);
   end;
