@@ -153,6 +153,7 @@ type
     function GetMailCSVLine(Data: PCSVMail): string;
     procedure UpdateNodeInputsYandex(Node: PVirtualNode);
     procedure UpdateNodeInputsMail(Node: PVirtualNode);
+    function GoogleUsageToFloat(Usage: string): extended;
   public
 
   end;
@@ -232,7 +233,8 @@ begin
       end;
     6:
       begin
-        CellText := NodeData^.EmailUsage;
+        //CellText := NodeData^.EmailUsage;
+        CellText := FloatToStr(GoogleUsageToFloat(NodeData^.EmailUsage)) + 'Гб';
       end;
     7:
       begin
@@ -657,6 +659,17 @@ begin
   cbDelete.Checked:=StrToBool(NodeData^.delete);
 end;
 
+function TForm1.GoogleUsageToFloat(Usage: string): extended;
+var
+  tmp: string;
+  _pos: integer;
+begin
+  _pos := pos('GB', Usage);
+  tmp := Copy(Usage, 0, _pos - 1);
+  if tmp <> '' then
+    TryStrToFloat(StringReplace(tmp, '.', ',', [rfReplaceAll]), Result);
+end;
+
 procedure TForm1.MenuItem2Click(Sender: TObject);
 begin
   if OpenDialog1.Execute then
@@ -809,7 +822,7 @@ var
 begin
   ImportList := TList.Create;
 
-  bUseSeconName :=  Application.MessageBox('Подставить Отчество к Имени?', 'Вопрос', MB_YESNO) = IDYES;
+  bUseSeconName :=  Application.MessageBox('Подставить Отчество к Имени?', 'Вопрос', MB_YESNO + MB_ICONQUESTION) = IDYES;
 
   Node := VST.GetFirst;
   while Assigned(Node) do
@@ -923,7 +936,7 @@ begin
     3: Result := Result + CompareText(Data1^.EMail, Data2^.EMail);
     4: Result := Result + CompareText(Data1^.Status, Data2^.Status);
     5: Result := Result + CompareText(Data1^.LastSignIn, Data2^.LastSignIn);
-    6: Result := Result + CompareText(Data1^.EmailUsage, Data2^.EmailUsage);
+    6: Result := Result + Round(GoogleUsageToFloat(Data2^.EmailUsage)*100 - GoogleUsageToFloat(Data1^.EmailUsage)*100);
     7: Result := Result + CompareText(Data1^.TotalStorage, Data2^.TotalStorage);
   end;
 end;
